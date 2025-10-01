@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Posso Doar? - Sangue-Connect{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/posso_doar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/presets.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="app-screen">
+    <header class="page-header">
+        <a href="{{ url_for('home') }}" class="back-button">
+            <img src="{{ url_for('static', filename='icons/voltar.svg') }}" alt="Voltar" class="back-icon">
+        </a>
+        <h2>Requisitos para Doação</h2>
+    </header>
+
+    <main class="main-content">
+        <p class="intro-text">Estes são os principais critérios para doar sangue. A avaliação final é sempre feita por um profissional no local da doação.</p>
+
+        <div class="requisitos-lista">
+            
+            <h2 class="secao-titulo">Requisitos Essenciais</h2>
+
+            <div class="requisito-item">
+                <div class="item-icon check">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </div>
+                <div class="item-texto">
+                    <h3>Idade</h3>
+                    <p>Ter entre 16 e 69 anos, sendo que a primeira doação não pode ser feita com mais de 60 anos (Jovens de 16 e 17 anos precisam de autorização dos responsáveis).</p>
+                </div>
+            </div>
+
+            <div class="requisito-item">
+                <div class="item-icon check">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </div>
+                <div class="item-texto">
+                    <h3>Peso Mínimo</h3>
+                    <p>Pesar no mínimo 50 kg.</p>
+                </div>
+            </div>
+            
+            <div class="requisito-item">
+                <div class="item-icon check">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </div>
+                <div class="item-texto">
+                    <h3>Estar saudável e alimentado</h3>
+                    <p>Não estar em jejum. Evite alimentos gordurosos nas 3 horas que antecedem a doação.</p>
+                </div>
+            </div>
+            
+            <h2 class="secao-titulo">Impedimentos Temporários</h2>
+
+            <div class="requisito-item">
+                <div class="item-icon warning">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+                </div>
+                <div class="item-texto">
+                    <h3>Tatuagem / Piercing</h3>
+                    <p>Aguardar 6 meses após a realização. Se o local não tiver condições de avaliação, o prazo é de 12 meses.</p>
+                </div>
+            </div>
+
+            <div class="requisito-item">
+                <div class="item-icon warning">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+                </div>
+                <div class="item-texto">
+                    <h3>Gripe, Resfriado ou Febre</h3>
+                    <p>Aguardar 7 dias após o desaparecimento total dos sintomas.</p>
+                </div>
+            </div>
+
+            <div class="requisito-item">
+                <div class="item-icon warning">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+                </div>
+                <div class="item-texto">
+                    <h3>Extração Dentária</h3>
+                    <p>Aguardar 7 dias. Tratamento de canal exige um prazo de 14 dias.</p>
+                </div>
+            </div>
+
+            <h2 class="secao-titulo">Impedimentos Definitivos</h2>
+
+            <div class="requisito-item">
+                <div class="item-icon x">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </div>
+                <div class="item-texto">
+                    <h3>Hepatite</h3>
+                    <p>Quem teve hepatite após os 11 anos de idade.</p>
+                </div>
+            </div>
+
+            <div class="requisito-item">
+                <div class="item-icon x">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </div>
+                <div class="item-texto">
+                    <h3>Doenças Infecciosas</h3>
+                    <p>Quem já teve HIV (AIDS), Doença de Chagas ou Malária.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="{{ url_for('agendar_doacao') }}" class="btn-cta">Entendi, quero agendar!</a>
+    </main>
+</div>
+{% endblock %}

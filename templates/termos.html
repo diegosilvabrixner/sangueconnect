@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Termos de Uso - Sangue-Connect{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/termos.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/presets.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="app-screen">
+    <header class="termos-header">
+        <h2>Termos de Uso</h2>
+    </header>
+
+    <main class="termos-content">
+        <p>Bem-vindo ao <strong>Sangue-Connect</strong>. Ao utilizar nosso aplicativo, você concorda com os seguintes termos e condições:</p>
+        <h3>1. Propósito do Aplicativo</h3>
+        <p>O Sangue-Connect é uma plataforma destinada a facilitar a conexão entre doadores de sangue, hemocentros e pessoas que necessitam de doações. Nós não realizamos coletas de sangue nem somos responsáveis pelos procedimentos médicos.</p>
+        <h3>2. Conta do Usuário</h3>
+        <p>Você é responsável por manter a confidencialidade de sua conta e senha. Todas as informações fornecidas, como nome, e-mail e sexo, devem ser precisas e verdadeiras, pois são essenciais para o cálculo dos intervalos de doação.</p>
+        <h3>3. Conduta</h3>
+        <p>O uso do aplicativo para fins ilegais, fraudulentos ou que prejudiquem outros usuários é estritamente proibido. Esperamos uma conduta respeitosa e colaborativa de todos na comunidade.</p>
+        <h3>4. Limitação de Responsabilidade</h3>
+        <p>Nossa plataforma atua como uma ponte. Não nos responsabilizamos pela qualidade dos serviços prestados pelos hemocentros ou pela veracidade das campanhas criadas pelos usuários.</p>
+        <p><em>Última atualização: 12 de Setembro de 2025.</em></p>
+    </main>
+
+    <footer class="termos-footer">
+        <a href="{{ url_for('cadastro') }}" class="btn-aceitar">Aceitar e Continuar</a>
+    </footer>
+</div>
+{% endblock %}

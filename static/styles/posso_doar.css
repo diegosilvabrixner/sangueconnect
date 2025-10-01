@@ -1,0 +1,102 @@
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    color: var(--color-secondary);
+}
+
+.main-content {
+    padding: 0 20px 20px 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.intro-text {
+    text-align: center;
+    color: var(--color-secondary);
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.requisitos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.secao-titulo {
+    font-family: var(--font-primary);
+    color: var(--color-secondary);
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--color-tertiary);
+    padding-bottom: 5px;
+}
+
+.requisito-item {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-tertiary);
+    padding: 15px;
+    border-radius: 12px;
+    gap: 15px;
+}
+
+.item-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-icon.check {
+    background-color: #27ae60;
+    color: white;
+}
+
+.item-icon.warning {
+    background-color: #f39c12;
+    color: white;
+}
+
+.item-icon.x {
+    background-color: #c0392b;
+    color: white;
+}
+
+.item-texto h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: var(--color-secondary);
+}
+
+.item-texto p {
+    margin: 0;
+    font-size: 14px;
+    color: #5c3a34;
+    line-height: 1.4;
+}
+
+.btn-cta {
+    display: block;
+    width: 90%;
+    max-width: 330px;
+    margin: 40px auto 20px auto;
+    padding: 15px;
+    border-radius: 25px;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}

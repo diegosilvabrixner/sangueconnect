@@ -1,0 +1,19 @@
+@import url("reset.css");
+@import url("presets.css");
+@import url("login.css");
+@import url("cadastro.css");
+@import url("contato.css");
+@import url("home.css");
+@import url("mapa.css");
+@import url("termos.css");
+@import url("agendar_doacao.css");
+@import url("minhas_doacoes.css");
+@import url("perfil.css");
+@import url("posso_doar.css");
+@import url("quiz.css");
+@import url("criar_campanha.css");
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-primary);
+}

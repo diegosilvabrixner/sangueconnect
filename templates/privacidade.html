@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Políticas de Privacidade - Sangue-Connect{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/termos.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/presets.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="app-screen">
+    <header class="termos-header">
+        <h2>Políticas de Privacidade</h2>
+    </header>
+
+    <main class="termos-content">
+        <p>Sua privacidade é muito importante para nós. Esta política descreve como coletamos, usamos e protegemos suas informações no <strong>Sangue-Connect</strong>.</p>
+        <h3>1. Informações que Coletamos</h3>
+        <p><strong>Dados de Cadastro:</strong> Coletamos seu nome, e-mail e sexo. O sexo é utilizado exclusivamente para calcular o intervalo de tempo correto entre as doações, conforme as diretrizes de saúde (60 dias para homens e 90 dias para mulheres).</p>
+        <p><strong>Dados de Uso:</strong> Coletamos informações sobre suas doações registradas e agendamentos para gerenciar seu histórico e calcular quando você estará apto a doar novamente.</p>
+        <h3>2. Como Usamos Suas Informações</h3>
+        <p>Utilizamos seus dados para personalizar sua experiência, gerenciar seus agendamentos, calcular os prazos para doação e conectar você a campanhas de doação. <strong>Nós não vendemos ou compartilhamos suas informações pessoais com terceiros para fins de marketing.</strong></p>
+        <h3>3. Segurança</h3>
+        <p>Empregamos medidas de segurança padrão de mercado para proteger seus dados contra acesso não autorizado, alteração ou destruição.</p>
+        <p><em>Ao continuar usando o aplicativo, você concorda com esta Política de Privacidade. Última atualização: 12 de Setembro de 2025.</em></p>
+    </main>
+
+    <footer class="termos-footer">
+        <a href="{{ url_for('cadastro') }}" class="btn-aceitar">Aceitar e Continuar</a>
+    </footer>
+</div>
+{% endblock %}

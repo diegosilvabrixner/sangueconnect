@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Minhas Doações - Sangue-Connect{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/minhas_doacoes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/presets.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="app-screen">
+    <header class="page-header">
+        <a href="{{ url_for('home') }}" class="back-button">
+            <img src="{{ url_for('static', filename='icons/voltar.svg') }}" alt="Voltar" class="back-icon">
+        </a>
+        <h2>Minhas Doações</h2>
+    </header>
+
+    <main class="main-content">
+        <div class="tab-buttons-container">
+            <button id="btn-agendamentos" class="tab-button active">Agendamentos</button>
+            <button id="btn-historico" class="tab-button">Histórico</button>
+        </div>
+
+        <div id="lista-agendamentos" class="lista-container">
+            {% if agendamentos %}
+                {% for agendamento in agendamentos %}
+                <div class="item-doacao" data-id="{{ agendamento.id }}" data-tipo="agendamento">
+                    <div class="info-doacao">
+                        <p class="local"><strong>Local:</strong> {{ agendamento.local }}</p>
+                        <p class="data-hora">
+                            <span><strong>Data:</strong> {{ agendamento.data.split('-') | reverse | join('/') }}</span>
+                            <span><strong>Hora:</strong> {{ agendamento.hora }}</span>
+                        </p>
+                    </div>
+                    <button class="btn-excluir">Cancelar</button>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="lista-vazia">Você não tem doações agendadas.</p>
+            {% endif %}
+        </div>
+
+        <div id="lista-historico" class="lista-container" style="display: none;">
+            {% if registros %}
+                {% for registro in registros %}
+                <div class="item-doacao" data-id="{{ registro.id }}" data-tipo="registro">
+                    <div class="info-doacao">
+                        <p class="local"><strong>Local:</strong> {{ registro.local }}</p>
+                        <p class="data-hora"><strong>Data:</strong> {{ registro.data.split('-') | reverse | join('/') }}</p>
+                    </div>
+                    <button class="btn-excluir">Excluir</button>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="lista-vazia">Você não tem doações registradas no seu histórico.</p>
+            {% endif %}
+        </div>
+    </main>
+</div>
+
+<div id="modal-confirmacao" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <p id="modal-mensagem">Você tem certeza?</p>
+        <div class="modal-buttons">
+            <button id="btn-modal-cancelar" class="modal-button-cancelar">Cancelar</button>
+            <button id="btn-modal-confirmar" class="modal-button-confirmar">Confirmar</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts/minhas_doacoes.js') }}" defer></script>
+{% endblock %}

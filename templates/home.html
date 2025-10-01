@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Sangue-Connect{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <div class="home-box botoes-container">
+        <div class="header-content-wrapper">
+            <img src="{{ url_for('static', filename='img/gota.svg') }}" alt="Mascote" class="header-mascote">
+        </div>
+        <div class="botoes-group">
+            <a href="{{ url_for('agendar_doacao') }}" class="botao-principal">
+                <img src="{{ url_for('static', filename='icons/agendar.png') }}" alt="Ícone Agendar">
+                <span>Agendar<br>Doação</span>
+            </a>
+            <a href="{{ url_for('minhas_doacoes') }}" class="botao-principal">
+                <img src="{{ url_for('static', filename='icons/minhas.png') }}" alt="Ícone Minhas Doações">
+                <span>Minhas<br>Doações</span>
+            </a>
+            <a href="{{ url_for('posso_doar') }}" class="botao-principal">
+                <img src="{{ url_for('static', filename='icons/posso_doar.png') }}" alt="Ícone Posso Doar?">
+                <span>Posso<br>Doar?</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="home-box campanhas-box">
+        <h2 class="campanhas-ativas">Campanhas Ativas</h2>
+        <div class="campanhas-lista">
+            <div class="campanha-item">
+                <p class="campanha-cidade">Porto Alegre</p>
+                <p class="campanha-dias">10 a 15/09</p>
+            </div>
+            <div class="campanha-item">
+                <p class="campanha-cidade">Novo Hamburgo</p>
+                <p class="campanha-dias">12 a 20/09</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="home-box campanhas-box">
+        <h2>Campanhas da Comunidade</h2>
+        <div class="campanhas-lista">
+            {% if campanhas_futuras %}
+                {% for campanha in campanhas_futuras %}
+                <div class="campanha-item">
+                    <p class="campanha-cidade">{{ campanha.cidade }}</p>
+                    <div class="campanha-detalhes">
+                        <p><strong>{{ campanha.nome_campanha }}</strong></p>
+                        <p>{{ campanha.data_inicio.split('-') | reverse | join('/') }} a {{ campanha.data_fim.split('-') | reverse | join('/') }}</p>
+                        <p><strong>{{ campanha.participantes }}</strong> participante(s)</p>
+                    </div>
+                    {% if campanha.ja_participa %}
+                        <button class="btn-participar inscrito" disabled>Inscrito ✓</button>
+                    {% else %}
+                        <a href="{{ url_for('participar_campanha', campanha_id=campanha.id) }}" class="btn-participar">Participar</a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="texto-central">Nenhuma campanha da comunidade encontrada.</p>
+            {% endif %}
+        </div>
+        <a href="{{ url_for('criar_campanha') }}" class="btn-criar-campanha">Criar a minha campanha</a>
+    </div>
+
+    <div class="home-box doacao-box">
+        <p class="titulo">{{ titulo_doacao }}</p>
+        <span class="dias">{{ status_doacao }}</span>
+        <a href="{{ url_for('registrar_doacao') }}" class="btn-registrar-doacao">Registrar minha última doação</a>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/menu.svg') }}" alt="Menu"></a>
+        <a href="{{ url_for('mapa') }}"><img src="{{ url_for('static', filename='icons/map.svg') }}" alt="Mapa"></a>
+        <a href="{{ url_for('quiz') }}"><img src="{{ url_for('static', filename='icons/info.svg') }}" alt="Info"></a>
+        <a href="{{ url_for('perfil') }}"><img src="{{ url_for('static', filename='icons/profile.svg') }}" alt="Perfil"></a>
+    </nav>
+</div>
+{% endblock %}

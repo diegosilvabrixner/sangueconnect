@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Sangue-Connect{% endblock %}
+
+{% block content %}
+    <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Logo" class="logo">
+    <p class="titulo_login">Conecte-se com a vida: <br> Seja um Herói, Doe Sangue</p>
+
+    <form id="form-login" class="login-form">
+    <input 
+        type="email" 
+        id="email" 
+        name="email" 
+        placeholder="E-mail" 
+        required 
+        class="campo-login"
+    >
+
+    <input 
+        type="password" 
+        id="senha" 
+        name="senha" 
+        placeholder="Senha" 
+        required 
+        class="campo-login"
+    >
+
+    <p id="mensagem-erro" style="color: red;"></p>
+
+    <a href="{{ url_for('remember') }}" class="nova_senha">Esqueci minha senha</a>
+    
+    <button type="submit" class="btn_entrar">Login</button>
+
+</form>
+
+    <p class="texto_cadastro">Ainda não tem uma conta?<br></p> 
+    <a href="{{ url_for('cadastro') }}" class="link_cadastro"><strong>Crie a sua conta</strong></a>
+
+
+    <script src="{{ url_for('static', filename='scripts/login.js') }}"></script>
+{% endblock %}

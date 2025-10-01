@@ -1,0 +1,159 @@
+/* Estrutura principal da tela do quiz */
+.app-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.quiz-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 15px;
+    flex-shrink: 0; /* Impede o header de encolher */
+}
+
+.quiz-back-button {
+    flex-shrink: 0;
+}
+
+.progress-bar-container {
+    flex-grow: 1;
+    height: 16px;
+    background-color: var(--color-tertiary);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #27ae60, #2ecc71);
+    border-radius: 8px;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Área principal do quiz, com rolagem se necessário */
+.quiz-main {
+    flex-grow: 1; /* Faz a área principal ocupar o espaço disponível */
+    padding: 30px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Adiciona rolagem SE o conteúdo for muito grande */
+    /* Garante que o conteúdo comece do topo */
+    justify-content: flex-start; 
+}
+
+#loading-state, #question-state {
+    width: 100%;
+    /* REMOVIDO: margin: auto 0; ESTA LINHA CAUSAVA O PROBLEMA */
+}
+
+#loading-state {
+    text-align: center;
+    color: var(--color-secondary);
+    margin: auto 0; /* Mantemos aqui para o spinner ficar no meio */
+}
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--color-tertiary);
+    border-top-color: var(--color-secondary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+#question-text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-secondary);
+    text-align: center;
+    margin-top: 0; 
+    margin-bottom: 30px; 
+}
+
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-family: var(--font-primary);
+    background-color: white;
+    border: 2px solid #e0e0e0;
+    border-bottom-width: 4px;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s ease-in-out;
+}
+
+.option-button.selected, .option-button:active {
+    border-color: var(--color-secondary);
+    background-color: #fdf2f0;
+    transform: translateY(2px);
+    border-bottom-width: 2px;
+}
+
+.option-button.correct {
+    border-color: #27ae60 !important;
+    background-color: #e9f7ef !important;
+    color: #27ae60 !important;
+}
+
+.option-button.incorrect {
+    border-color: #c0392b !important;
+    background-color: #fdedec !important;
+    color: #c0392b !important;
+}
+
+.quiz-footer {
+    padding: 20px;
+    text-align: center;
+    flex-shrink: 0; 
+    background-color: var(--color-primary);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box; 
+}
+
+.feedback {
+    font-size: 18px;
+    font-weight: bold;
+    min-height: 25px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.feedback.correct { color: #27ae60; }
+.feedback.incorrect { color: #c0392b; }
+
+#check-button {
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    background-color: #27ae60;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-bottom: 4px solid #219150;
+    transition: background-color 0.2s;
+}
+
+#check-button:disabled {
+    background-color: #e0e0e0;
+    border-bottom: 4px solid #c0c0c0;
+    cursor: not-allowed;
+}

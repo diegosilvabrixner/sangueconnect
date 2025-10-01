@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Mapa de Hemocentros - Sangue-Connect{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/mapa.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/presets.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="app-screen">
+    <header class="page-header">
+        <a href="{{ url_for('home') }}" class="back-button">
+            <img src="{{ url_for('static', filename='icons/voltar.svg') }}" alt="Voltar" class="back-icon">
+        </a>
+        <h2>Hemocentros Próximos</h2>
+    </header>
+
+    <div id="mapa-container">
+        <div id="mapa-mensagem" class="mapa-feedback">
+            <p>Obtendo sua localização...</p>
+            
+            <!-- Formulário de busca manual (inicialmente oculto) -->
+            <div id="busca-manual-container" style="display: none;">
+                <p class="aviso-permissao">Não foi possível obter sua localização.</p>
+                <p class="instrucao-busca">Por favor, digite um endereço para buscar:</p>
+                <input type="text" id="endereco-input" placeholder="Ex: Av. Paulista, 1000, São Paulo">
+                <button id="btn-buscar-endereco">Buscar</button>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="bottom-nav">
+        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/menu.svg') }}" alt="Menu"></a>
+        <a href="{{ url_for('mapa') }}"><img src="{{ url_for('static', filename='icons/map.svg') }}" alt="Mapa"></a>
+        <a href="{{ url_for('quiz') }}"><img src="{{ url_for('static', filename='icons/info.svg') }}" alt="Info"></a>
+        <a href="{{ url_for('perfil') }}"><img src="{{ url_for('static', filename='icons/profile.svg') }}" alt="Perfil"></a>
+    </nav>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7mFoPWHpkDFAvF_gdJhisaEXgKNNApPM&libraries=places,geocoding" defer></script>
+<!-- SEM defer -->
+<script src="{{ url_for('static', filename='scripts/mapa.js') }}"></script>
+{% endblock %}

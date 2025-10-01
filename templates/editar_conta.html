@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Conta - Sangue-Connect{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/editar_conta.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/presets.css') }}">
+    <!-- Reutilizando o CSS de agendamento/minhas_doacoes para o header, modal e tela de sucesso -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/minhas_doacoes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/agendar_doacao.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="app-screen">
+    <header class="agendamento-header">
+        <a href="{{ url_for('perfil') }}" class="back-button">
+            <img src="{{ url_for('static', filename='icons/voltar.svg') }}" alt="Voltar" class="back-icon">
+        </a>
+        <h2>Editar Conta</h2>
+    </header>
+
+    <main class="main-content-editar">
+        <div id="formulario-container">
+            <form id="form-editar" class="form-editar">
+                <input type="text" name="nome" placeholder="Nome completo" value="{{ usuario_info.nome }}" required class="campo-login">
+                <input type="email" name="email" placeholder="E-mail" value="{{ usuario_info.email }}" required class="campo-login">
+                
+                <select name="sexo" required class="campo-login">
+                    <option value="Masculino" {% if usuario_info.sexo == 'Masculino' %}selected{% endif %}>Masculino</option>
+                    <option value="Feminino" {% if usuario_info.sexo == 'Feminino' %}selected{% endif %}>Feminino</option>
+                </select>
+                
+                <div id="mensagem-edicao" class="mensagem-cadastro erro"></div>
+
+                <button type="submit" class="btn-salvar">Salvar Alterações</button>
+            </form>
+        </div>
+
+        <div id="sucesso-container" class="sucesso-info" style="display: none;">
+            <img src="{{ url_for('static', filename='icons/profile.svg') }}" alt="Sucesso" class="sucesso-icon">
+            <h2>Salvo com Sucesso!</h2>
+            <p>Suas informações foram atualizadas.</p>
+            <a href="{{ url_for('perfil') }}" class="btn-ver-agendamentos">Voltar ao Perfil</a>
+        </div>
+    </main>
+</div>
+
+<div id="modal-confirmacao" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <p id="modal-mensagem">Você tem certeza?</p>
+        <div class="modal-buttons">
+            <button id="btn-modal-cancelar" class="modal-button-cancelar">Cancelar</button>
+            <button id="btn-modal-confirmar" class="modal-button-confirmar">Confirmar</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts/editar_conta.js') }}" defer></script>
+{% endblock %}

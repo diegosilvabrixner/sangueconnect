@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Agendar Doação - Sangue-Connect{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/agendar_doacao.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/presets.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="app-screen">
+    <header class="agendamento-header">
+        <a href="{{ url_for('home') }}" class="back-button">
+            <img src="{{ url_for('static', filename='icons/voltar.svg') }}" alt="Voltar" class="back-icon">
+        </a>
+        <h2>Agendar Doação</h2>
+    </header>
+
+    <main class="form-container">
+        <div id="formulario-container">
+            <div id="agendamento-form">
+                <div class="input-group">
+                    <label for="local">Local:</label>
+                    <div class="select-wrapper">
+                        <select id="local" name="local" required>
+                            <option value="" disabled selected>Selecione o local</option>
+                            <option value="Hemocentro Central">Hemocentro Central</option>
+                            <option value="Hospital da Cidade">Hospital da Cidade</option>
+                            <option value="Posto de Coleta Zona Sul">Posto de Coleta Zona Sul</option>
+                            <option value="Clínica Vida Nova">Clínica Vida Nova</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="data">Data:</label>
+                    <div class="input-wrapper">
+                        <input type="date" id="data" name="data" required>
+                        <span class="date-placeholder">
+                            <span class="placeholder-text">Selecione a data</span>
+                            <img src="{{ url_for('static', filename='icons/calendar.svg') }}" alt="" class="input-icon">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="hora">Hora:</label>
+                    <div class="select-wrapper">
+                        <select id="hora" name="hora" required>
+                            <option value="" disabled selected>Selecione a hora</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <p id="error-message" class="error-text"></p>
+            <button type="button" id="confirmar-btn">Confirmar Doação</button>
+        </div>
+
+        <div id="sucesso-container" class="sucesso-info" style="display: none;">
+            <img src="{{ url_for('static', filename='icons/agendar.png') }}" alt="Sucesso" class="sucesso-icon">
+            <h2>Doação Agendada!</h2>
+            <p>Seu agendamento foi confirmado com sucesso. Obrigado por ajudar a salvar vidas!</p>
+            <a href="{{ url_for('minhas_doacoes') }}" class="btn-ver-agendamentos">Ver Meus Agendamentos</a>
+            <a href="{{ url_for('agendar_doacao') }}" class="link-agendar-nova">Agendar nova doação</a>
+        </div>
+
+    </main>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts/agendar_doacao.js') }}" defer></script>
+{% endblock %}

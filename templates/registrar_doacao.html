@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Registrar Doação - Sangue-Connect{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    {# Vamos continuar usando o CSS da outra página, pois o estilo de sucesso será adicionado lá #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/agendar_doacao.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/presets.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="app-screen">
+    <header class="agendamento-header">
+        <a href="{{ url_for('home') }}" class="back-button">
+            <img src="{{ url_for('static', filename='icons/voltar.svg') }}" alt="Voltar" class="back-icon">
+        </a>
+        <h2>Registrar Doação</h2>
+    </header>
+
+    <main class="form-container">
+        <div id="formulario-container">
+            <div class="input-group">
+                <label for="local">Local onde doou:</label>
+                <div class="select-wrapper">
+                    <select id="local" name="local" required>
+                        <option value="" disabled selected>Selecione o local</option>
+                        <option value="Hemocentro Central">Hemocentro Central</option>
+                        <option value="Hospital da Cidade">Hospital da Cidade</option>
+                        <option value="Posto de Coleta Zona Sul">Posto de Coleta Zona Sul</option>
+                        <option value="Clínica Vida Nova">Clínica Vida Nova</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-group">
+                    <label for="data">Data:</label>
+                    <div class="input-wrapper">
+                        <input type="date" id="data" name="data" required>
+                        <span class="date-placeholder">
+                            <span class="placeholder-text">Selecione a data</span>
+                            <img src="{{ url_for('static', filename='icons/calendar.svg') }}" alt="" class="input-icon">
+                        </span>
+                    </div>
+            </div>
+            
+            <p id="error-message" class="error-text"></p>
+            <button type="button" id="confirmar-btn">Confirmar</button>
+        </div>
+
+        <div id="sucesso-container" class="sucesso-info" style="display: none;">
+            <img src="{{ url_for('static', filename='icons/minhas.png') }}" alt="Sucesso" class="sucesso-icon">
+            <h2>Doação Registrada!</h2>
+            <p>Seu histórico foi atualizado com sucesso. A contagem de dias para sua próxima doação já foi recalculada!</p>
+            <a href="{{ url_for('home') }}" class="btn-ver-agendamentos">Voltar para a Home</a>
+            <a href="{{ url_for('registrar_doacao') }}" class="link-agendar-nova">Registrar outra doação</a>
+        </div>
+        </main>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts/registrar_doacao.js') }}" defer></script>
+{% endblock %}

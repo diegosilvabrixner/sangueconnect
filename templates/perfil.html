@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Perfil - Sangue-Connect{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/perfil.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/presets.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="app-screen">
+    <header class="page-header-perfil"></header>
+
+    <main class="main-content perfil-content">
+        <div class="perfil-header">
+            <img src="{{ url_for('static', filename='icons/perfil.svg') }}" alt="Foto de perfil" class="perfil-icon">
+            <h2>Olá, {{ session.get('user_name', usuario_info.nome) }}</h2>
+        </div>
+
+        <div class="perfil-info-box">
+            <div class="info-item">
+                <p class="label">E-mail:</p>
+                <p class="value">{{ usuario_info.email }}</p>
+            </div>
+            <div class="info-item">
+                <p class="label">Sexo:</p>
+                <p class="value">{{ usuario_info.sexo }}</p>
+            </div>
+            <div class="info-item">
+                <p class="label">Última doação:</p>
+                <p class="value">
+                    {% if ultima_doacao %}
+                        {{ ultima_doacao.split('-') | reverse | join('/') }}
+                    {% else %}
+                        Nenhuma doação registrada
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        
+        <a href="{{ url_for('editar_conta') }}" class="btn-perfil btn-editar">Editar Conta</a>
+        <a href="{{ url_for('logout') }}" class="btn-perfil btn-sair">Sair</a>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/menu.svg') }}" alt="Menu"></a>
+        <a href="{{ url_for('mapa') }}"><img src="{{ url_for('static', filename='icons/map.svg') }}" alt="Mapa"></a>
+        <a href="{{ url_for('quiz') }}"><img src="{{ url_for('static', filename='icons/info.svg') }}" alt="Info"></a>
+        <a href="{{ url_for('perfil') }}"><img src="{{ url_for('static', filename='icons/profile.svg') }}" alt="Perfil"></a>
+    </nav>
+{% endblock %}
+{% block scripts %}
+    {# <script src="{{ url_for('static', filename='scripts/perfil.js') }}" defer></script> #}
+{% endblock %}

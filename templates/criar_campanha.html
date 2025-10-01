@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Criar Campanha - Sangue-Connect{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/criar_campanha.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/presets.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="app-screen">
+    <header class="page-header">
+        <a href="{{ url_for('home') }}" class="back-button"><img src="{{ url_for('static', filename='icons/voltar.svg') }}" alt="Voltar" class="back-icon"></a>
+        <h2>Criar Campanha</h2>
+    </header>
+
+    <main class="main-content">
+        <form id="form-criar-campanha">
+            <div class="input-group">
+                <label for="nome_campanha">Nome da Campanha:</label>
+                <input type="text" id="nome_campanha" name="nome_campanha" placeholder="Ex: Doe Sangue, Salve Vidas!" required>
+            </div>
+
+            <div class="input-group radio-group">
+                <label>Esta campanha é para:</label>
+                <div>
+                    <input type="radio" id="tipo-altruista" name="tipo" value="Altruísta" checked>
+                    <label for="tipo-altruista">Doação altruísta</label>
+                </div>
+                <div>
+                    <input type="radio" id="tipo-especifica" name="tipo" value="Específica">
+                    <label for="tipo-especifica">Alguém específico</label>
+                </div>
+            </div>
+
+            <h3 class="section-title">Local da Coleta</h3>
+            <div class="input-group">
+                <label for="cep">CEP:</label>
+                <input type="tel" id="cep" name="cep" placeholder="Digite o CEP" maxlength="9">
+            </div>
+            <div class="input-group-row">
+                <div class="input-group">
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade" required readonly>
+                </div>
+                <div class="input-group">
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" id="bairro" name="bairro" readonly>
+                </div>
+            </div>
+            
+            <h3 class="section-title">Período da Campanha</h3>
+            <div class="input-group-row">
+                <div class="input-group">
+                    <label for="data_inicio">Data de Início:</label>
+                    <input type="date" id="data_inicio" name="data_inicio" required>
+                </div>
+                <div class="input-group">
+                    <label for="data_fim">Data de Fim:</label>
+                    <input type="date" id="data_fim" name="data_fim" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="descricao">Descrição (opcional):</label>
+                <textarea id="descricao" name="descricao" rows="4" placeholder="Conte um pouco sobre a campanha..."></textarea>
+            </div>
+
+            <div class="forum-toggle">
+                <span>Postar campanha no Fórum</span>
+                <label class="switch"><input type="checkbox" disabled><span class="slider round"></span></label>
+            </div>
+            
+            <div id="mensagem-campanha" class="mensagem-feedback"></div>
+            <button type="submit" class="btn-confirmar">Confirmar Solicitação</button>
+        </form>
+    </main>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts/criar_campanha.js') }}" defer></script>
+{% endblock %}

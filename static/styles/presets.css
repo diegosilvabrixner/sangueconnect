@@ -1,0 +1,16 @@
+:root{
+    --color-primary: #f7eee9;
+    --color-secondary: #7f2e2e;
+    --color-tertiary: #dfafa4;
+    --color-quaternary: #000;
+
+    --font-primary: 'Montserrat', sans-serif; 
+}
+/* Remove o destaque azul/cinza ao tocar em botões e links no celular */
+a,
+button,
+input,
+select {
+    -webkit-tap-highlight-color: transparent;
+    outline: none; /* Também remove a borda de foco que pode aparecer */
+}

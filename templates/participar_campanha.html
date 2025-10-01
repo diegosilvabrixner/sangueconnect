@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Participar da Campanha - Sangue-Connect{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/agendar_doacao.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/presets.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="app-screen">
+    <header class="agendamento-header">
+        <a href="{{ url_for('home') }}" class="back-button"><img src="{{ url_for('static', filename='icons/voltar.svg') }}" alt="Voltar" class="back-icon"></a>
+        <h2>Participar</h2>
+    </header>
+
+    <main class="form-container">
+        <div id="formulario-container" 
+             data-campanha-id="{{ campanha.id }}"
+             data-inicio-campanha="{{ campanha.data_inicio }}"
+             data-fim-campanha="{{ campanha.data_fim }}">
+            
+            <div class="input-group">
+                <label for="local">Campanha:</label>
+                <input type="text" id="local" name="local" value="{{ campanha.nome_campanha }} ({{ campanha.cidade }})" readonly class="campo-readonly">
+            </div>
+
+            <div class="input-group">
+                <label for="data">Data:</label>
+                <div class="input-wrapper">
+                    <input type="date" id="data" name="data" required>
+                    <span class="date-placeholder">
+                        <span class="placeholder-text">Selecione a data</span>
+                        <img src="{{ url_for('static', filename='icons/calendar.svg') }}" alt="" class="input-icon">
+                    </span>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="hora">Escolha uma hora:</label>
+                <select id="hora" name="hora" required>
+                    <option value="" disabled selected>Selecione a hora</option>
+                </select>
+            </div>
+
+            <p id="error-message" class="error-text"></p>
+            <button type="button" id="confirmar-btn">Confirmar Participação</button>
+        </div>
+        
+        <div id="sucesso-container" class="sucesso-info" style="display: none;">
+            <img src="{{ url_for('static', filename='icons/agendar.png') }}" alt="Sucesso" class="sucesso-icon">
+            <h2>Participação Agendada!</h2>
+            <p>Obrigado por se juntar a esta campanha e ajudar a salvar vidas!</p>
+            <a href="{{ url_for('home') }}" class="btn-ver-agendamentos">Voltar para a Home</a>
+        </div>
+    </main>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts/participar_campanha.js') }}" defer></script>
+{% endblock %}

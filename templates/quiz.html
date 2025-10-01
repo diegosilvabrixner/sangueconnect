@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz - Sangue-Connect{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/quiz.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/presets.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="app-screen">
+    <header class="quiz-header">
+        <a href="{{ url_for('home') }}" class="quiz-back-button">
+            <img src="{{ url_for('static', filename='icons/voltar.svg') }}" alt="Voltar" class="back-icon">
+        </a>
+        <div class="progress-bar-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+    </header>
+
+    <main id="quiz-container" class="quiz-main">
+        <div id="loading-state">
+            <div class="spinner"></div>
+            <p>Gerando uma nova pergunta...</p>
+        </div>
+
+        <div id="question-state" style="display: none;">
+            <h2 id="question-text"></h2>
+            <div id="options-container" class="options-grid"></div>
+        </div>
+    </main>
+
+    <footer id="quiz-footer" class="quiz-footer">
+        <div id="feedback-message" class="feedback"></div>
+        <button id="check-button" disabled>Verificar</button>
+    </footer>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts/quiz.js') }}" defer></script>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastro - Sangue-Connect{% endblock %}
+
+{% block content %}
+<img src="{{ url_for('static', filename='img/img_cadastro.svg') }}" alt="Logo" id="img_cadastro" class="logo">
+
+<form id="form-cadastro" class="cadastro-form">
+    <input type="text" name="nome" placeholder="Nome completo" required class="campo-login">
+    <input type="email" name="email" placeholder="E-mail" required class="campo-login">
+    
+    <select name="sexo" required class="campo-login">
+        <option value="" disabled selected>Selecione o sexo</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Feminino">Feminino</option>
+    </select>
+    
+    <input type="password" name="senha" placeholder="Senha" required class="campo-login">
+    <input type="password" name="confirmar_senha" placeholder="Confirmar Senha" required class="campo-login">
+
+    <label class="checkbox-grid">
+        <input type="checkbox" id="aceito_termos" name="aceito_termos">
+        <span class="checkbox-text">
+            Aceito os <a href="{{ url_for('termos') }}" class="termos">Termos de Uso</a> e as
+            <a href="{{ url_for('privacidade') }}" class="termos">políticas de privacidade</a>
+        </span>
+    </label>
+
+    <div id="mensagem-cadastro" class="mensagem-cadastro"></div>
+
+    <button type="submit" class="btn_cadastrar">Cadastrar</button>
+    <div class="login-info-container">
+        <p class="texto-login">Já tem uma conta?</p>
+        <a href="{{ url_for('index') }}" class="link-login"><strong>Faça login</strong></a>
+    </div>
+</form>
+
+<script src="{{ url_for('static', filename='scripts/cadastro.js') }}"></script>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts/cadastro.js') }}" defer></script>
+{% endblock %}
+

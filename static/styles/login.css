@@ -1,0 +1,90 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f7eee9;
+}
+
+.logo{
+    display: block;
+    margin: 0.2em auto 0 auto;
+    max-width: 85%;
+    margin-bottom: -2em;
+}
+
+.titulo_login{
+    text-align: center;
+    margin-top: -2.8em;
+    margin-bottom: 3em;
+    color: var(--color-secondary);
+    font-family: var(--font-primary);
+    font-size: 16px;
+    
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 330px;
+    margin: 0 auto;
+}
+
+.campo-login {
+    text-indent: 10px;
+    padding: 10px;
+    border: 2px solid var(--color-secondary);
+    border-radius: 1.2em;
+    font-size: 18px;
+    background-color: var(--color-primary);
+}
+
+.btn_entrar {
+    background-color: var(--color-tertiary);
+    color: var(--color-secondary);
+    padding: 0.4em 1.5em 0.4em 1.5em;
+    border: none;
+    border-radius: 1.2em;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 700;
+    max-width: 60%;
+    margin: 1em auto 0 auto;
+    text-decoration: none;
+}
+
+.nova_senha {
+    text-align: center;
+    margin-top: 1em;
+    color: var(--color-quaternary);
+    text-decoration: none;
+    font-family: var(--font-primary);
+    margin-top: -2.3em;
+    margin-bottom: -1.2em;
+}
+
+.texto_cadastro {
+    text-align: center;
+    color: var(--color-quaternary);
+    font-family: var(--font-primary);
+    margin-top: 1.5em;
+    margin-bottom: 0.4em;
+}
+
+.link_cadastro {
+    display: block;
+    text-align: center;
+    color: var(--color-secondary);
+    text-decoration: none;
+    font-size: 18px;
+    
+}
+
+body.dark-mode {
+    background: #121212;
+    color: #fff;
+}
+body.dark-mode .campo-login {
+    background-color: #1e1e1e;
+    border: 2px solid #444;
+    color: #fff;
+}
+
