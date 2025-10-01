@@ -66,15 +66,15 @@ Pré-requisitos
 
 Passos
 
-    Clone o repositório (substitua SEU-USUARIO):
+    Clone o repositório:
     Bash
 
-git clone [https://github.com/SEU-USUARIO/sangue-connect.git](https://github.com/SEU-USUARIO/sangue-connect.git)
+git clone [https://github.com/diegosilvabrixner/sangueconnect.git](https://github.com/diegosilvabrixner/sangueconnect.git)
 
 Navegue até o diretório do projeto:
 Bash
 
-cd sangue-connect
+cd sangueconnect
 
 Crie e ative um ambiente virtual (recomendado):
 Bash
@@ -122,4 +122,4 @@ Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes
 
     Diego da Silva
 
-    Link do Projeto: https://github.com/diegosilvabrixner/sangue-connect
+    Link do Projeto: https://github.com/diegosilvabrixner/sangueconnect
